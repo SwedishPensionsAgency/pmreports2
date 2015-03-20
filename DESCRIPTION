@@ -2,11 +2,11 @@ Package: pmreports
 Type: Package
 Title: PM Reports
 Version: 0.1
-Date: 2013-07-16
-Author: Thomas Reinholdsson, Cedric Perriard
+Date: 2015-03-20
+Author: Cedric Perriard, Love Hansson, Thomas Reinholdsson
 Maintainer: Cedric Perriard <cedric.perriard@pensionsmyndigheten.se>
 Description: ...
-License: AGPL-3
+License: MIT
 Suggests:
     MIDAS,
     format.tables,
