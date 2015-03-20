@@ -12,6 +12,7 @@ Suggests:
     format.tables,
     translater,
     format.plot,
+    pmbundle
 Depends:
     directlabels,
     Hmisc,
