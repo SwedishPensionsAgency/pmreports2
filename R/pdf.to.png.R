@@ -16,7 +16,7 @@ pdf.to.png <- function(
   resolution = 600, 
   options = ""){
   tmpfile <- tempfile("Rpng")
-  cmd <- paste0(system.file("gs", "bin", "gswin32.exe", package = getPackageName()), 
+  cmd <- paste0(ghostscript_path(), 
                 " ", "-dSAFER -dBATCH -dNOPAUSE -sDEVICE=png16m -r", resolution, " -dTextAlphaBits=4 -dGraphicsAlphaBits=4",
                 " ", shQuote(paste0("-sFONTPATH=", paste(fontpaths, collapse = .Platform$path.sep))), 
                 " ", options, 
