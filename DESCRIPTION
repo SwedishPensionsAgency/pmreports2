@@ -1,19 +1,22 @@
 Package: pmreports2
 Type: Package
-Title: PM Reports v2
+Title: PM Reports
 Version: 0.1
 Date: 2015-03-20
 Author: Cedric Perriard, Love Hansson, Thomas Reinholdsson
 Maintainer: Cedric Perriard <cedric.perriard@pensionsmyndigheten.se>
-Description: ...
+Description: A collection of functions used in report production at the Swedish
+  Pensions Agency. This includes plot formatting, table formatting in LaTeX and
+  HTML, PDF export, and more. This is the second iteration.
 License: MIT
-Suggests:
+Suggests: 
     MIDAS,
     format.tables,
     translater,
     format.plot,
-    pmbundle
-Depends:
+    pmbundle,
+    testthat
+Depends: 
     directlabels,
     Hmisc,
     scales,
