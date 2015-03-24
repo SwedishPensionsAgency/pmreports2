@@ -3,20 +3,16 @@
   assign(".pmreports.env", new.env(), envir= asNamespace(pkgname))
 }
 
-.onAttach <- function(libname, pkgname){
+.onAttach <- function(libname, pkgname) {
   theme_preloading()
-
-  set_year(2013)
+  
   set_fontsize(7.2)
   set_lang(lang = "sv")
   
-  if (require(MIDAS)) {
-    .midas_db <- "\\\\psysstat8w\\G\\MIDAS"
-    change.database(.midas_db)
-  } else {
-    message("Please install the MIDAS-package with dependencies and run '?change.database' for full function. Maybe it is located under 'F:\\20-Linje lokalt\\26-Analysavd\\00-Avdelningsgemensamt\\79-Pensionsmodellen\\50-Utveckling\\R\\R_paket_midas\\built_packages'. Please contact the maintainer of the package.")
-  }
-
+  # pmbundle is a non-required dependency. However, several functions in pmreports depend on it at the moment.
+  if (!require(pmbundle)) {
+    message("Package pmbundle is not installed. pmreports will work without it but some functionality might be limited or broken. The pmbundle package is only available to employees of the Swedish Pensions Agency. For more information, please contact the package maintainer.")
+  }  
   if (!require(format.plot)) {
     message("Please install the package format.plot devtools::install_github('SwedishPensionsAgency/format.plot') for full functionallity.")
   }
@@ -26,8 +22,5 @@
   }
   
   assign("pm_colors", pm_colors_cmyk(), envir = .GlobalEnv)
-  
-  Sys.setenv(R_GSCMD = ghostscript_path())
-  
 }
 
