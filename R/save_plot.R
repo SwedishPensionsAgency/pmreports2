@@ -1,6 +1,6 @@
 #' Save plot as pdf to ./figure directory
 #' 
-#' Save plot as pdf to ./figure directory and output latex code 
+#' Save plot as pdf to ./figure directory and output latex code. This function depends on the format.plot package and will not function without it.
 #' 
 #' @param plot plot object
 #' @param figurename name of the figuer without extension
@@ -35,7 +35,12 @@ save_plot <- function(
   fix.labels = FALSE,
   embed.fonts = TRUE, 
   translate = TRUE, 
-  ...){
+  ...) {
+  
+  # Quit if format.plot is unavailable
+  if (!require(format.plot)) {
+    stop('Package format.plot is required to create saveable plots. Please install it using devtools::install_github("SwedishPensionsAgency/format.plot") and re-run your code.')
+  }
   
   if (get_lang() != "sv") {
     path <- file.path(path, get_lang())
