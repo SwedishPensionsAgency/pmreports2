@@ -1,8 +1,8 @@
 #' pmreports
 #'
-#' Functions used in the Orange Report
+#' Reporting functions used at the Swedish Pensions Agency
 #' 
-#' @name pmreports-package
-#' @aliases pmreports
+#' @name pmreports2-package
+#' @aliases pmreports2
 #' @docType package
 NULL
