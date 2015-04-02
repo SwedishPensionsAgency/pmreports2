@@ -8,7 +8,10 @@ percent_format <- function ()
 {
   function(x) {
     x <- round_any(x, precision(x)/100)
-    str_c(format(x * 100, big.mark = .big.mark, decimal.mark = .decimal.mark, scientific = FALSE, trim = TRUE), " %")
+    str_c(
+      format(x * 100, big.mark = .big.mark, decimal.mark = .decimal.mark, scientific = FALSE, trim = TRUE),
+          " %"
+      )
   }
 }
 
