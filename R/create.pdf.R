@@ -37,7 +37,11 @@ create.pdf <- function(
   
   
   timestamp <- format(Sys.time(), "_%Y-%m-%d+%H.%M.%S")
-  fontpath <- system.file("fonts", package = getPackageName())
+  
+  if (!require("pmbundle")) {
+    stop("create.pdf() requires package pmbundle to run!")
+  }
+  fontpath <- system.file("fonts", package = "pmbundle")
   
   files <- normalizePath(files)
   tempdir <- tempdir()
