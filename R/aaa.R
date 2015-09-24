@@ -4,7 +4,6 @@
 }
 
 .onAttach <- function(libname, pkgname) {
-  theme_preloading()
   
   set_fontsize(7.2)
   set_lang(lang = "sv")

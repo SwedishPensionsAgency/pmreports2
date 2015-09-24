@@ -73,26 +73,4 @@ custom_theme <- function (base_size = 9, base_family = "Neo Sans Pro")
 }
 
 #' @rdname style-plot
-#' @export
-theme_preloading <- function() {
-  family <- "Neo Sans Pro"
-  regular <- "NeoSansPro-Regular.afm"
-  bold <- "NeoSansPro-Medium.afm"
-  italic <- "NeoSansPro-Italic.afm"
-  bolditalic <- "NeoSansPro-MediumItalic.afm"
-
-  args <- list()
-  args[[family]] <- Type1Font(family,
-                              metrics = file.path(system.file("metrics", package = getPackageName()),
-                                                  c(regular, bold, italic, bolditalic)), 
-                              encoding = "default")
-  if (!family %in% names(pdfFonts())) 
-    do.call(pdfFonts, args)
-  if (!family %in% names(postscriptFonts()))
-    do.call(postscriptFonts, args)
-  
-  args[[family]] <- windowsFont(family)
-  if (!family %in% names(windowsFonts()))
-    do.call(windowsFonts, args)
-}
 
