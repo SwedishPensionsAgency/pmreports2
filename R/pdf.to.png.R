@@ -1,6 +1,6 @@
 #' Convert PDF to PNG
 #' 
-#' Converts a PDf file to PNG with Ghostscript
+#' Deprecated, use \code{format.plot::pdf_to_png} instead. Converts a PDf file to PNG with Ghostscript
 #' 
 #' @param file a character string giving the name of the original pdf file
 #' @param outfile the name of the new png file including ".png" extension
@@ -9,6 +9,8 @@
 #' @param options a character string containing further options to Ghostscript
 #' 
 #' @export
+#' 
+#' 
 pdf.to.png <- function(
   file, 
   outfile, 
@@ -20,16 +22,6 @@ pdf.to.png <- function(
     warning("pdf.to.png() could not find package pmbundle installed on your system. This might cause important functionality to break.")
   }
   
-  tmpfile <- tempfile("Rpng")
-  cmd <- paste0(ghostscript_path(), 
-                " ", "-dSAFER -dBATCH -dNOPAUSE -sDEVICE=png16m -r", resolution, " -dTextAlphaBits=4 -dGraphicsAlphaBits=4",
-                " ", shQuote(paste0("-sFONTPATH=", paste(fontpaths, collapse = .Platform$path.sep))), 
-                " ", options, 
-                " ", "-sOutputFile=", tmpfile, 
-                " ", shQuote(file))
-  ret <- system(cmd)
-  if (ret != 0) 
-    stop(gettextf("status %d in running command '%s'", ret, 
-                  cmd), domain = NA)
-  file.copy(tmpfile, outfile, overwrite = TRUE)
+  warning("The function 'pdf.to.png' is deprecated. Please use format.plot::pdf_to_png instead.")
+  format.plot::pdf_to_png(file = file, outfile = outfile, fontpaths = fontpaths, resolution = resolution, options = options)
 }
