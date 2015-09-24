@@ -39,7 +39,7 @@ create.pdf <- function(
   timestamp <- format(Sys.time(), "_%Y-%m-%d+%H.%M.%S")
   
   if (!require("pmbundle")) {
-    stop("create.pdf() requires package pmbundle to run!")
+    warning("could not find package pmbundle. This might cause create.pdf() to break or halt if it cannot find the proprietary fonts required to create a PM themed PDF installed on your system.")
   }
   fontpath <- system.file("fonts", package = "pmbundle")
   

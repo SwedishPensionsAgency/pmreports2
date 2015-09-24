@@ -21,8 +21,17 @@ run.pandoc <- function(
   
   if (!is.null(pandoc.path))
     pandoc.exe <- file.path(pandoc.path, "pandoc.exe")
-  else
-    pandoc.exe <- normalizePath(system.file("Pandoc", "pandoc.exe", package = getPackageName()))
+  else {
+    sys.pandoc <- Sys.which("pandoc")
+    
+    if (sys.pandoc == "") {
+      if (!require("pmbundle"))
+        stop("run.pandoc cannot find path to pandoc in $PATH and package pmbundle is not installed")
+      pandoc.exe <- normalizePath(system.file("Pandoc", "pandoc.exe", package = "pmbundle"))
+    } else {
+      pandoc.exe <- sys.pandoc
+    }
+  }
   
   cmd <- sprintf("%s -f %s -t %s %s -o %s %s", 
                  pandoc.exe, 

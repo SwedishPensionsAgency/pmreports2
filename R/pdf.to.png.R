@@ -12,9 +12,14 @@
 pdf.to.png <- function(
   file, 
   outfile, 
-  fontpaths = system.file("fonts", package = getPackageName()), 
+  fontpaths = system.file("fonts", package = "pmbundle"),
   resolution = 600, 
-  options = ""){
+  options = "") {
+  
+  if (!require("pmbundle")) {
+    warning("pdf.to.png() could not find package pmbundle installed on your system. This might cause important functionality to break.")
+  }
+  
   tmpfile <- tempfile("Rpng")
   cmd <- paste0(ghostscript_path(), 
                 " ", "-dSAFER -dBATCH -dNOPAUSE -sDEVICE=png16m -r", resolution, " -dTextAlphaBits=4 -dGraphicsAlphaBits=4",
